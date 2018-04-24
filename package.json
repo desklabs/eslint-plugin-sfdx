@@ -1,0 +1,22 @@
+{
+  "name": "eslint-plugin-sfdx",
+  "version": "0.0.0",
+  "description": "Custom rules for Salesforce DX",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
+  "author": "Thomas Stachl",
+  "main": "index.js",
+  "dependencies": {
+    "salesforce-lightning-cli": "*"
+  },
+  "devDependencies": {
+    "eslint": "~3.9.1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "license": "Salesforce Developer MSA"
+}
