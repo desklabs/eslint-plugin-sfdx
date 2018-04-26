@@ -36,10 +36,10 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "ecma-intrinsics": 1,
-        "secure-document": 1,
-        "aura-api": 1,
-        "secure-window": 1
+        "sfdx/ecma-intrinsics": 1,
+        "sfdx/secure-document": 1,
+        "sfdx/aura-api": 1,
+        "sfdx/secure-window": 1
     }
 }
 ```

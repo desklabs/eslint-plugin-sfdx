@@ -5,20 +5,10 @@
 "use strict";
 
 //------------------------------------------------------------------------------
-// Requirements
-//------------------------------------------------------------------------------
-
-var objectAssign = require('object-assign');
-var defaultConfig = require('salesforce-lightning-cli/lib/config');
-
-//------------------------------------------------------------------------------
 // Plugin Definition
 //------------------------------------------------------------------------------
 
 var SINGLETON_FILE_REGEXP = /(Controller|Renderer|Helper|Provider|Test|Model)\.js$/;
-var config = {};
-objectAssign(config, defaultConfig);
-config.rules = objectAssign({}, defaultConfig.rules);
 
 // this computes the first position after all the comments (multi-line and single-line)
 // from the top of the code
@@ -65,7 +55,22 @@ function processFunctionCode(code) {
     return code;
 }
 
-config.processors = {
+module.exports.rules = {
+  "aura-api": {
+    create: require('salesforce-lightning-cli/rules/aura-api.js')
+  },
+  "ecma-intrinsics": {
+    create: require('salesforce-lightning-cli/rules/ecma-intrinsics.js')
+  },
+  "secure-document": {
+    create: require('salesforce-lightning-cli/rules/secure-document.js')
+  },
+  "secure-window": {
+    create: require('salesforce-lightning-cli/rules/secure-window.js')
+  }
+};
+
+module.exports.processors = {
     ".js": {
         preprocess: function(text, filename) {
             if (SINGLETON_FILE_REGEXP.test(filename)) {
@@ -79,7 +84,4 @@ config.processors = {
             return messages[0];
         }
     }
-}
-
-// import all rules in lib/rules
-module.exports = config;
+};
